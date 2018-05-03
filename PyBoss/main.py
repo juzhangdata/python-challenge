@@ -82,18 +82,21 @@ def convert_data(csvpath):
             first_name=(name_split[0])
             last_name=(name_split[1])
 
+            #collect dob values
+            dob_split = row["DOB"].split("-")
+            dob = dob_split[1] + "/" + dob_split[2] + "/" + dob_split[0]
+
             #collect ssn values
             ssn=("***-**-" + row["SSN"][7:])
 
             #collect state values
-            state=(us_state_abbrev[row["State"]])
+            state = us_state_abbrev[row["State"]]
             
             #add a new row as a list to the dictionary
-            new_employee_data.append({"Emp ID":row["Emp ID"],"First Name":first_name,"Last Name":last_name,"DOB":row["DOB"],"SSN":ssn,"State":state})
+            new_employee_data.append({"Emp ID":row["Emp ID"],"First Name":first_name,"Last Name":last_name,"DOB":dob,"SSN":ssn,"State":state})
 
 #call function to collect data from each file:
 convert_data(csvpath1)
-convert_data(csvpath2)
 
 #open output file to write
 csvpath = os.path.join("output.csv")
