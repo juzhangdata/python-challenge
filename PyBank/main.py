@@ -70,13 +70,21 @@ with open(csvpath, newline='') as csvfile:
     greatest_decrease_in_revenue_index = revenue_change.index(greatest_decrease_in_revenue)
     greatest_decrease_in_revenue_month = months[greatest_decrease_in_revenue_index]  
 
-    #print financial analysis
-    print('```')
-    print('Financial Analysis\n' + '----------------------------')
-    print('Total Months: ' + str(total_months))
-    print('Total Revenue: $'  + str(total_revenue))
-    print('Average Revenue Change: $'  + str(average_revenue_change))
-    print('Greatest Increase in Revenue: '  + greatest_increase_in_revenue_month + ' ($' + str(greatest_increase_in_revenue) + ')' )
-    print('Greatest Decrease in Revenue: '  + greatest_decrease_in_revenue_month + ' ($' + str(greatest_decrease_in_revenue) + ')' )
-    
-    print('```')
+    #save financial analysis as a string
+    report_string = "```\n" + "Financial Analysis\n" + "----------------------------\n"\
+    + "Total Months: " + str(total_months) + "\n"\
+    + "Total Revenue: $"  + str(total_revenue) + "\n"\
+    + "Average Revenue Change: $"  + str(average_revenue_change) + "\n"\
+    + "Greatest Increase in Revenue: "  + greatest_increase_in_revenue_month + " ("\
+    + "$" + str(greatest_increase_in_revenue) + ")" + "\n"\
+    + "Greatest Decrease in Revenue: "  + greatest_decrease_in_revenue_month + " ("\
+    + "$" + str(greatest_decrease_in_revenue) + ")" + "\n"\
+    + "```"
+
+    #print financial analysis:
+    print(report_string) 
+
+    #save financial analysis to txt
+    output_file = os.path.join("output.txt")
+    with open(output_file, "w") as f:
+        f.write(report_string)
