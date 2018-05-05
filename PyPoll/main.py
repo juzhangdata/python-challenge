@@ -64,7 +64,7 @@ for i in range(len(candidates_list)):
 
 #save the report as a string:
 report_string = "```\n" + "Election Results\n" + "-------------------------\n"\
- f"Total Votes: {total_votes}\n" + "-------------------------\n"\
++ f"Total Votes: {total_votes}\n" + "-------------------------\n"\
 + candidates_string + "-------------------------\n"\
 + f"Winner: {winner}\n" + "-------------------------\n" + "```\n"
 
